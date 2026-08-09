@@ -10,7 +10,7 @@ import 'package:share_plus/share_plus.dart';
 
 // IMPORTANT: For production, do NOT ship a secret API key inside the APK.
 // Put the remove.bg call behind your own backend/proxy.
-const String removeBgApiKey = 'PUT_YOUR_REMOVE_BG_API_KEY_HERE';
+const String removeBgApiKey = 'X3k6mSHQMeNFqdXng7KYodJT';
 const String proProductId = 'ai_background_remover_pro_lifetime_3eur';
 
 void main() => runApp(const BackgroundRemoverApp());
