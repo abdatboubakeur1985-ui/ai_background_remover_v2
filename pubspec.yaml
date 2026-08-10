@@ -1,5 +1,5 @@
 name: ai_background_remover_v2
-description: "A new Flutter project."
+description: "A new Flutter project for AI background removal."
 publish_to: 'none'
 
 version: 1.0.0+1
@@ -11,10 +11,6 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.6
-  http: ^1.2.0
-  image_picker: ^1.0.7
-  path_provider: ^2.1.2
-  share_plus: ^7.2.1
 
 dev_dependencies:
   flutter_test:
