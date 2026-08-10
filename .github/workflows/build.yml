@@ -23,16 +23,27 @@ jobs:
         with:
           flutter-version: '3.19.6'
 
+      - name: Auto Create MainActivity
+        run: |
+          mkdir -p android/app/src/main/kotlin/com/example/ai_background_remover_v2
+          cat << 'EOF' > android/app/src/main/kotlin/com/example/ai_background_remover_v2/MainActivity.kt
+          package com.example.ai_background_remover_v2
+
+          import io.flutter.embedding.android.FlutterActivity
+
+          class MainActivity: FlutterActivity() {
+          }
+          EOF
+
       - name: Install Dependencies
         run: flutter pub get
 
       - name: Build APK
-        run:       - name: Build APK
-        run: flutter build apk --release --no-suppress-analytics
- --release
+        run: flutter build apk --release
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: app-release
           path: build/app/outputs/flutter-apk/app-release.apk
+
