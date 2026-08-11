@@ -1,29 +1,31 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.ai_background_remover_v2">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
-        android:label="ai_background_remover_v2"
-        android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
-
-        <!-- الإشارة الصريحة لـ Flutter Embedding v2 -->
-        <meta-data
-            android:name="flutterEmbedding"
-            android:value="2" />
+        android:label="AI Background Remover V2"
+        android:allowBackup="true">
 
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:launchMode="singleTop"
-            android:theme="@style/LaunchTheme"
+            android:theme="@android:style/Theme.Material.Light.NoActionBar"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
             android:hardwareAccelerated="true"
             android:windowSoftInputMode="adjustResize">
-            
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+
         </activity>
+
+        <meta-data
+            android:name="flutterEmbedding"
+            android:value="2"/>
+
     </application>
+
 </manifest>
