@@ -1,49 +1,19 @@
-name: Build APK
+- name: Set up Flutter
+  uses: subosito/flutter-action@v2
+  with:
+    flutter-version: '3.19.6'
 
-on:
-  push:
-    branches: [ "main" ]
-  workflow_dispatch:
+- name: Generate Android Project
+  run: flutter create --platforms=android .
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
+- name: Install Dependencies
+  run: flutter pub get
 
-    steps:
-      - uses: actions/checkout@v4
+- name: Build APK
+  run: flutter build apk --release
 
-      - name: Set up Java
-        uses: actions/setup-java@v3
-        with:
-          distribution: 'zulu'
-          java-version: '17'
-
-      - name: Set up Flutter
-        uses: subosito/flutter-action@v2
-        with:
-          flutter-version: '3.19.6'
-
-      - name: Auto Create MainActivity
-        run: |
-          mkdir -p android/app/src/main/kotlin/com/example/ai_background_remover_v2
-          cat << 'EOF' > android/app/src/main/kotlin/com/example/ai_background_remover_v2/MainActivity.kt
-          package com.example.ai_background_remover_v2
-
-          import io.flutter.embedding.android.FlutterActivity
-
-          class MainActivity: FlutterActivity() {
-          }
-          EOF
-
-      - name: Install Dependencies
-        run: flutter pub get
-
-      - name: Build APK
-        run: flutter build apk --release
-
-      - name: Upload APK
-        uses: actions/upload-artifact@v4
-        with:
-          name: app-release
-          path: build/app/outputs/flutter-apk/app-release.apk
-
+- name: Upload APK
+  uses: actions/upload-artifact@v4
+  with:
+    name: app-release
+    path: build/app/outputs/flutter-apk/app-release.apk
